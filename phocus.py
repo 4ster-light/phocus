@@ -2,15 +2,21 @@ import os
 import subprocess
 import sys
 import time
+import socket
 
 from rich.console import Console
 from rich.prompt import Prompt
-from rich import print
 
 HOSTS_FILE = "/etc/hosts"
 REDIRECT_IP = "127.0.0.1"
 
 console = Console()
+
+def get_ip_addresses(domain):
+    try:
+        return socket.gethostbyname_ex(domain)[2]
+    except socket.gaierror:
+        return []
 
 def block_websites():
     if not os.geteuid() == 0:
@@ -36,8 +42,24 @@ def block_websites():
     try:
         with open(HOSTS_FILE, "a") as file:
             for website in websites:
+                # Block main domain
                 file.write(f"{REDIRECT_IP} {website}\n")
-                console.print(f"[green]Blocked:[/green] {website}")
+                # Block www subdomain
+                file.write(f"{REDIRECT_IP} www.{website}\n")
+                # Block IP addresses associated with the domain
+                ip_addresses = get_ip_addresses(website)
+                for ip in ip_addresses:
+                    file.write(f"{REDIRECT_IP} {ip}\n")
+                console.print(f"[green]Blocked:[/green] {website} and its IP addresses")
+        
+        # Flush DNS cache
+        if sys.platform == "darwin":  # macOS
+            subprocess.run(["sudo", "killall", "-HUP", "mDNSResponder"])
+        elif sys.platform == "linux":
+            subprocess.run(["sudo", "systemd-resolve", "--flush-caches"])
+        else:
+            console.print("[bold red]Unsupported platform. Exiting...[/bold red]")
+            return
         
         console.print("[bold cyan]The websites have been blocked. Press Ctrl+C to unblock and exit.[/bold cyan]")
         
@@ -54,4 +76,3 @@ def block_websites():
 
 if __name__ == "__main__":
     block_websites()
-
