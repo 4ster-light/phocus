@@ -1,4 +1,4 @@
-module phocus
+module github.com/4ster-light/phocus
 
 go 1.23.2
 
