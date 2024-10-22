@@ -23,11 +23,11 @@ go install github.com/4ster-light/phocus@latest
 1. Run the application with administrator privileges:
 - On Unix-like systems:
 ```bash
-sudo domain-blocker
+sudo phocus
 ```
 - On Windows (run Command Prompt as Administrator):
 ```cmd
-domain-blocker
+phocus
 ```
 2. Enter domains to block in the input field
 3. Press Enter to block each domain
