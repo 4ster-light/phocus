@@ -72,7 +72,7 @@ func (m Model) View() string {
 	var builder strings.Builder
 
 	// Add title
-	builder.WriteString(titleStyle.Render("DOMAIN BLOCKER"))
+	builder.WriteString(titleStyle.Render("P H O C U S"))
 	builder.WriteString("\n\n")
 
 	// Add viewport with messages

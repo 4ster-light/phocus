@@ -1,4 +1,7 @@
-# Phocus
+<div>
+    <h1 style="text-align: center;">P H O C U S</h1>
+</div>
+
 An interactive TUI application to manage domain blocking through the system's hosts file. This application provides an easy way to block and unblock domains system-wide using a terminal user interface.
  
 ![Phocus](phocus.png)
@@ -15,9 +18,17 @@ An interactive TUI application to manage domain blocking through the system's ho
 - Root/Administrator privileges (required for modifying hosts file and flushing DNS)
 
 ## Installation
-```bash
-go install github.com/4ster-light/phocus@latest
+For Unix like systems (Linux and MacOS) run the following command:
 ```
+curl -sSL https://raw.githubusercontent.com/4ster-light/phocus/main/install/install.sh | sudo bash
+```
+For Windows run the following command:
+> [!IMPORTANT]
+> In windows this must be run as administrator
+```
+irm https://raw.githubusercontent.com/4ster-light/phocus/main/install/install.ps1 | iex
+```
+This should make the program globally available in your system, if you whish to uninstall, just remove the binary from the path shown in the output of the installation script.
 
 ## Usage
 1. Run the application with administrator privileges:
