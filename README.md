@@ -25,7 +25,8 @@ For Windows run the following command:
 ```
 irm https://raw.githubusercontent.com/4ster-light/phocus/main/install/install.ps1 | iex
 ```
-This should make the program globally available in your system, if you whish to uninstall, just remove the binary from the path shown in the output of the installation script.
+> [!NOTE]
+> This should make the program globally available in your system, if you whish to uninstall, just remove the binary from the path shown in the output of the installation script.
 
 ## Usage
 1. Run the application with administrator privileges:
