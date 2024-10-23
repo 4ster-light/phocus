@@ -1,7 +1,4 @@
-<div>
-    <h1 style="text-align: center;">P H O C U S</h1>
-</div>
-
+# P H O C U S
 An interactive TUI application to manage domain blocking through the system's hosts file. This application provides an easy way to block and unblock domains system-wide using a terminal user interface.
  
 ![Phocus](phocus.png)
