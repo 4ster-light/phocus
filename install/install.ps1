@@ -37,6 +37,8 @@ $TargetPath = Join-Path $TargetDir "phocus.exe"
 try {
     Move-Item -Path $SourceBinary -Destination $TargetPath -Force
     Write-Host "Phocus has been successfully installed to $TargetPath"
+    Write-Host "Now you can run the program with (from an administrator shell): phocus"
+    Write-Host "If you wish to remove the program run just delete the binary from $TargetPath"
 } catch {
     Write-Host "Failed to move binary. Please ensure you're running as Administrator"
     exit 1

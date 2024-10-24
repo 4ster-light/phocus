@@ -49,4 +49,5 @@ fi
 
 # Make it executable
 chmod +x "$TARGET_DIR/phocus"
-echo "No you can run the program from anywhere in your system with: sudo phocus"
+echo "Now you can run the program from anywhere in your system with: sudo phocus"
+echo "If you wish to remove the program completely from your system just run: sudo rm $TARGET_DIR/phocus"
